@@ -21,11 +21,9 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
     return Scaffold(
       appBar: AppBar(
         title: Text("消息"),
-        elevation: 0.0,
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
@@ -93,7 +91,7 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
               ),
               SliverList(
                   delegate: SliverChildBuilderDelegate(
-                    (context, index){
+                    (context, index) {
                       return Container(
                         child: Padding(
                           padding: EdgeInsets.symmetric(
@@ -159,7 +157,6 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
           ),
         ),
       ),
-      backgroundColor: Colors.grey[800],
     );
   }
 

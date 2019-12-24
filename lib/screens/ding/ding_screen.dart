@@ -11,7 +11,8 @@ class _DingPageState extends State<DingPage> with AutomaticKeepAliveClientMixin 
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
-  var _count = 0;
+  static var _options = ['未完成的', '已完成的', '我发出的', '我执行的', '抄送我的'];
+  var _selectVal = _options[0];
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +23,24 @@ class _DingPageState extends State<DingPage> with AutomaticKeepAliveClientMixin 
       appBar: AppBar(
         title: Text("DING"),
       ),
-      body: Center(
-        child: Text("$_count"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: (){
-          setState(() {
-            _count++;
-          });
-        },
-      ),
+      body: Container(
+        child: Row(
+          children: <Widget>[
+            DropdownButton<String>(
+              items: _options.map((item) => DropdownMenuItem(
+                value: item,
+                child: Text(item),
+              )).toList(),
+              onChanged: (select) {
+                setState(() {
+                  _selectVal = select;
+                });
+              },
+              value: _selectVal,
+            )
+          ],
+        ),
+      )
     );
   }
 

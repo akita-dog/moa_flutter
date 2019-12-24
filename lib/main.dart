@@ -21,11 +21,11 @@ class _MyAppState extends State<MyApp> {
     MinePage()
   ];
   var _tabBarItems = [
-    BottomNavigationBarItem(title: Text("消息", style: TextStyle(color: Colors.white70),), icon: Icon(Icons.message)),
-    BottomNavigationBarItem(title: Text("DING", style: TextStyle(color: Colors.white70),), icon: Icon(Icons.assignment_turned_in)),
-    BottomNavigationBarItem(title: Text("工作", style: TextStyle(color: Colors.white70),), icon: Icon(Icons.apps)),
-    BottomNavigationBarItem(title: Text("通讯录", style: TextStyle(color: Colors.white70),), icon: Icon(Icons.people)),
-    BottomNavigationBarItem(title: Text("我的", style: TextStyle(color: Colors.white70),), icon: Icon(Icons.person)),
+    BottomNavigationBarItem(title: Text("消息"), icon: Icon(Icons.message)),
+    BottomNavigationBarItem(title: Text("DING"), icon: Icon(Icons.assignment_turned_in)),
+    BottomNavigationBarItem(title: Text("工作"), icon: Icon(Icons.apps)),
+    BottomNavigationBarItem(title: Text("通讯录"), icon: Icon(Icons.people)),
+    BottomNavigationBarItem(title: Text("我的"), icon: Icon(Icons.person)),
   ];
   var _pageController = PageController();
   var _pageIndex = 0;
@@ -62,16 +62,12 @@ class _MyAppState extends State<MyApp> {
             topRight: Radius.circular(30.0),
           ),
           child: BottomNavigationBar(
-            backgroundColor: Colors.grey[800],
             items: _tabBarItems,
             currentIndex: _pageIndex,
             onTap: (index) => _pageController.jumpToPage(index),
             type: BottomNavigationBarType.fixed,
             unselectedIconTheme: IconThemeData(
-              color: Colors.white70,
-            ),
-            selectedIconTheme: IconThemeData(
-              color: Colors.white
+              color: Colors.grey,
             ),
             unselectedFontSize: 10.0,
           ),
