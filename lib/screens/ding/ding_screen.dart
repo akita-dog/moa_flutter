@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:moa_flutter/widgets/dropdown_selection_widget.dart';
 
 class DingPage extends StatefulWidget {
   @override
@@ -23,23 +24,41 @@ class _DingPageState extends State<DingPage> with AutomaticKeepAliveClientMixin 
       appBar: AppBar(
         title: Text("DING"),
       ),
-      body: Container(
-        child: Row(
-          children: <Widget>[
-            DropdownButton<String>(
-              items: _options.map((item) => DropdownMenuItem(
-                value: item,
-                child: Text(item),
-              )).toList(),
-              onChanged: (select) {
-                setState(() {
-                  _selectVal = select;
-                });
-              },
-              value: _selectVal,
-            )
-          ],
-        ),
+      body: Stack(
+        children: <Widget>[
+          DropdownSelectionWidget(
+            items: _options,
+            height: 50.0,
+            onChanged: (selectIndex) {
+            },
+          ),
+          Positioned(
+            //设置子元素
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 200,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.deepOrange,
+                ),
+                GestureDetector(
+                  onTap: () {
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    color: Color.fromRGBO(0, 0, 0, 0.1),
+                  ),
+                )
+              ],
+            ),
+            //设置定位，
+            left: 0.0,
+            top: 50,
+            width: MediaQuery.of(context).size.width,
+          ),
+
+        ],
       )
     );
   }

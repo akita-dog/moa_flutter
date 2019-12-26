@@ -13,8 +13,6 @@ class _WorkPageState extends State<WorkPage> with AutomaticKeepAliveClientMixin 
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
-  var _count = 0;
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
