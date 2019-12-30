@@ -191,17 +191,17 @@ class _WorkPageState extends State<WorkPage> with AutomaticKeepAliveClientMixin 
     return ["考勤打卡","考勤打卡","考勤打卡","考勤打卡","考勤打卡","考勤打卡"].map((item) {
       return Column(
         children: <Widget>[
-          FlatButton(
-            child: Container(
+          Container(
+            width: 70.0,
+            height: 70.0,
+            child: FlatButton(
               child: Icon(Icons.location_on, color: Colors.white,),
-              width: 70.0,
-              height: 70.0,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.all(Radius.circular(12.0))
+              color: Colors.blue,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
               ),
+              onPressed: () => debugPrint("点击应用"),
             ),
-            onPressed: () => debugPrint("点击应用"),
           ),
           SizedBox(height: 8.0,),
           Text(item, style: TextStyle(

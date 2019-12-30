@@ -21,81 +21,75 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
     return Scaffold(
       appBar: AppBar(
         title: Text("消息"),
+        elevation: 0.0,
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          )
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 14.0,
+          vertical: 4.0,
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 14.0,
-            vertical: 4.0,
-          ),
-          child: CustomScrollView(
-            slivers: <Widget>[
-              SliverToBoxAdapter(
-                child: FlatButton(
-                  color: Colors.grey[300],
-                  shape: StadiumBorder(),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(Icons.search, color: Colors.grey[600],size: 16.0),
-                      SizedBox(width: 10.0,),
-                      Text("搜索", style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 14.0,
-                      ),)
-                    ],
-                  ),
-                  onPressed: () => debugPrint("搜索！！"),
-                ),
-              ),
-              SliverToBoxAdapter(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverToBoxAdapter(
+              child: FlatButton(
+                color: Colors.grey[300],
+                shape: StadiumBorder(),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Icon(FontAwesomeIcons.at, size: 20.0,color: Colors.grey[300],),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Icon(FontAwesomeIcons.at, size: 20.0,color: Colors.grey[300],),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Icon(FontAwesomeIcons.at, size: 20.0,color: Colors.grey[300],),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Icon(FontAwesomeIcons.at, size: 20.0,color: Colors.grey[300],),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 14.0
-                      ),
-                      child: Icon(Icons.more_horiz, size: 20.0,color: Colors.grey[300],),
-                    ),
+                    Icon(Icons.search, color: Colors.grey[600],size: 16.0),
+                    SizedBox(width: 10.0,),
+                    Text("搜索", style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 14.0,
+                    ),)
                   ],
                 ),
+                onPressed: () => debugPrint("搜索！！"),
               ),
-              SliverToBoxAdapter(
-                child: SizedBox(),
+            ),
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Icon(FontAwesomeIcons.at, size: 20.0,color: Colors.grey[300],),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Icon(FontAwesomeIcons.at, size: 20.0,color: Colors.grey[300],),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Icon(FontAwesomeIcons.at, size: 20.0,color: Colors.grey[300],),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Icon(FontAwesomeIcons.at, size: 20.0,color: Colors.grey[300],),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: 14.0
+                    ),
+                    child: Icon(Icons.more_horiz, size: 20.0,color: Colors.grey[300],),
+                  ),
+                ],
               ),
-              SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      return Container(
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(),
+            ),
+            SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                    return Container(
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                            vertical: 14.0
+                              vertical: 14.0
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,8 +105,8 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Text("升级提醒", style: TextStyle(
-                                        color: Colors.grey[800],
-                                        fontSize: 18.0
+                                          color: Colors.grey[800],
+                                          fontSize: 18.0
                                       ),),
                                       SizedBox(height: 8.0,),
                                       Text("新功能介绍|12月16日职场运动新功能介绍|新功能……", style: TextStyle(
@@ -127,34 +121,33 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Text("12月16日", style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 10.0
+                                      color: Colors.grey,
+                                      fontSize: 10.0
                                   ),),
                                 ],
                               )
                             ],
                           ),
                         )
-                      );
-                    },
-                    childCount: 12,
-                  )
-              ),
-              SliverToBoxAdapter(
-                child: Container(
-                  padding: EdgeInsets.symmetric(
+                    );
+                  },
+                  childCount: 12,
+                )
+            ),
+            SliverToBoxAdapter(
+              child: Container(
+                padding: EdgeInsets.symmetric(
                     vertical: 20.0
-                  ),
-                  child: Center(
-                    child: Text("下面就没有了", style: TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.grey
-                    ),),
-                  ),
                 ),
-              )
-            ],
-          ),
+                child: Center(
+                  child: Text("下面就没有了", style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.grey
+                  ),),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

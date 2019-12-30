@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:moa_flutter/widgets/dropdown_selection_widget.dart';
+import 'package:moa_flutter/widgets/task_item_widget.dart';
 
 class DingPage extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _DingPageState extends State<DingPage> with AutomaticKeepAliveClientMixin 
   bool get wantKeepAlive => true;
 
   static var _options = ['未完成的', '已完成的', '我发出的', '我执行的', '抄送我的'];
-  var _selectVal = _options[0];
+  int _selectVal = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -24,42 +25,36 @@ class _DingPageState extends State<DingPage> with AutomaticKeepAliveClientMixin 
       appBar: AppBar(
         title: Text("DING"),
       ),
-      body: Stack(
+      body: Column(
         children: <Widget>[
           DropdownSelectionWidget(
+            headerKey: GlobalKey(),
             items: _options,
-            height: 50.0,
-            onChanged: (selectIndex) {
+            height: 40,
+            onChanged: (index) {
+              debugPrint("选择了$index");
+              _selectVal = index;
             },
           ),
-          Positioned(
-            //设置子元素
-            child: Column(
-              children: <Widget>[
-                Container(
-                  height: 200,
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.deepOrange,
-                ),
-                GestureDetector(
-                  onTap: () {
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    color: Color.fromRGBO(0, 0, 0, 0.1),
-                  ),
-                )
-              ],
+          Expanded(
+            child: ListView.separated(
+              itemBuilder: (context, index) => Container(
+                child: TaskItemWidget(),
+              ),
+              separatorBuilder: (context, index) {
+                return Divider(height: 0.0,);
+              },
+              itemCount: 20,
             ),
-            //设置定位，
-            left: 0.0,
-            top: 50,
-            width: MediaQuery.of(context).size.width,
-          ),
-
+          )
         ],
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: Colors.blue,
+        onPressed: (){
+        },
+      ),
     );
   }
 
