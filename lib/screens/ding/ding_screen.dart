@@ -53,6 +53,7 @@ class _DingPageState extends State<DingPage> with AutomaticKeepAliveClientMixin 
         child: Icon(Icons.add),
         backgroundColor: Colors.blue,
         onPressed: (){
+          debugPrint("新增");
         },
       ),
     );

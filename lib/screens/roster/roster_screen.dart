@@ -11,8 +11,6 @@ class _RosterPageState extends State<RosterPage> with AutomaticKeepAliveClientMi
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 
-  var _count = 0;
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -47,8 +45,8 @@ class _RosterPageState extends State<RosterPage> with AutomaticKeepAliveClientMi
           ),
           FlatButton(
             child: ListTile(
-              leading: Icon(Icons.perm_identity),
-              title: Text('我的好友'),
+              leading: Icon(Icons.star),
+              title: Text('常用联系人'),
               trailing: Icon(Icons.arrow_forward_ios),
             ),
             onPressed: () {
@@ -58,8 +56,19 @@ class _RosterPageState extends State<RosterPage> with AutomaticKeepAliveClientMi
           Divider(indent: 86.0, color: Colors.grey[200], height: 0.0,),
           FlatButton(
             child: ListTile(
-              leading: Icon(Icons.perm_identity),
+              leading: Icon(Icons.group),
               title: Text('我的群组'),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+            onPressed: () {
+              debugPrint("点击了选项");
+            },
+          ),
+          Divider(indent: 86.0, color: Colors.grey[200], height: 0.0,),
+          FlatButton(
+            child: ListTile(
+              leading: Icon(Icons.public),
+              title: Text('公众号'),
               trailing: Icon(Icons.arrow_forward_ios),
             ),
             onPressed: () {
@@ -72,9 +81,14 @@ class _RosterPageState extends State<RosterPage> with AutomaticKeepAliveClientMi
             color: Colors.grey[200],
           ),
           ListTile(
-            leading: FlutterLogo(size: 56.0),
-            title: Text('Two-line ListTile'),
-            subtitle: Text('Here is a second line'),
+            leading: FlutterLogo(size: 36.0),
+            title: Text(
+              '我的公司',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold
+              ),
+            ),
             trailing: Icon(Icons.more_vert),
           ),
           Divider(indent: 86.0, color: Colors.grey[200], height: 0.0,),
@@ -112,6 +126,29 @@ class _RosterPageState extends State<RosterPage> with AutomaticKeepAliveClientMi
             width: MediaQuery.of(context).size.width,
             height: 10.0,
             color: Colors.grey[200],
+          ),
+          ListTile(
+            leading: FlutterLogo(size: 36.0),
+            title: Text(
+              '关联公司1',
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+            trailing: Icon(Icons.more_vert),
+          ),
+          Divider(indent: 86.0, color: Colors.grey[200], height: 0.0,),
+          ListTile(
+            leading: FlutterLogo(size: 36.0),
+            title: Text(
+              '关联公司2',
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+            trailing: Icon(Icons.more_vert),
           ),
         ],
       )
