@@ -43,37 +43,31 @@ class _RosterPageState extends State<RosterPage> with AutomaticKeepAliveClientMi
               onPressed: () => debugPrint("搜索！！"),
             ),
           ),
-          FlatButton(
-            child: ListTile(
-              leading: Icon(Icons.star),
-              title: Text('常用联系人'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
+          ListTile(
+            leading: Icon(Icons.star),
+            title: Text('常用联系人'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
               debugPrint("点击了选项");
             },
           ),
           Divider(indent: 86.0, color: Colors.grey[200], height: 0.0,),
-          FlatButton(
-            child: ListTile(
-              leading: Icon(Icons.group),
-              title: Text('我的群组'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
+          ListTile(
+            leading: Icon(Icons.group),
+            title: Text('我的群组'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
               debugPrint("点击了选项");
-            },
+            }
           ),
           Divider(indent: 86.0, color: Colors.grey[200], height: 0.0,),
-          FlatButton(
-            child: ListTile(
-              leading: Icon(Icons.public),
-              title: Text('公众号'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
+          ListTile(
+            leading: Icon(Icons.public),
+            title: Text('公众号'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
               debugPrint("点击了选项");
-            },
+            }
           ),
           Container(
             width: MediaQuery.of(context).size.width,
@@ -90,37 +84,34 @@ class _RosterPageState extends State<RosterPage> with AutomaticKeepAliveClientMi
               ),
             ),
             trailing: Icon(Icons.more_vert),
+            onTap: () {
+              debugPrint("点击了选项");
+            }
           ),
           Divider(indent: 86.0, color: Colors.grey[200], height: 0.0,),
-          FlatButton(
-            child: ListTile(
-              leading: Icon(Icons.perm_identity),
-              title: Text('我的好友'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
+          ListTile(
+            leading: Icon(Icons.perm_identity),
+            title: Text('组织架构'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
               debugPrint("点击了选项");
-            },
+            }
           ),
-          FlatButton(
-            child: ListTile(
-              leading: Icon(Icons.perm_identity),
-              title: Text('我的好友'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
+          ListTile(
+            leading: Icon(Icons.perm_identity),
+            title: Text('工作群组'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
               debugPrint("点击了选项");
-            },
+            }
           ),
-          FlatButton(
-            child: ListTile(
-              leading: Icon(Icons.perm_identity),
-              title: Text('企业主页'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
-              debugPrint("企业主页");
-            },
+          ListTile(
+            leading: Icon(Icons.perm_identity),
+            title: Text('企业主页'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              debugPrint("点击了选项");
+            }
           ),
           Container(
             width: MediaQuery.of(context).size.width,

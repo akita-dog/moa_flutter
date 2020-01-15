@@ -9,6 +9,7 @@ class DropdownSelectionWidget extends StatefulWidget {
     @required this.items,
     @required this.onChanged,
     @required this.headerKey,
+    @required this.parentContext,
     this.index,
     this.height,
   });
@@ -17,6 +18,7 @@ class DropdownSelectionWidget extends StatefulWidget {
   final int index;
   final double height;
   final GlobalKey headerKey;
+  final BuildContext parentContext;
 
   @override
   _DropdownSelectionWidgetState createState() => _DropdownSelectionWidgetState();
@@ -42,7 +44,7 @@ class _DropdownSelectionWidgetState extends State<DropdownSelectionWidget> {
     return GestureDetector(
       onTap: (){
         if (!_isExpanded) {
-          _show(context);
+          _show(widget.parentContext);
         } else {
           _hide();
         }
@@ -68,65 +70,52 @@ class _DropdownSelectionWidgetState extends State<DropdownSelectionWidget> {
   }
 
   void _show(context){
-    OverlayState state = Overlay.of(context);
     RenderBox  renderBox = widget.headerKey.currentContext.findRenderObject();
     var headerSize = renderBox.size;
     double statusBarHeight = MediaQuery.of(context).padding.top;
-    double kLeadingWidth = kToolbarHeight;
+    double kLeadingHeight = kToolbarHeight;
     _entry = OverlayEntry(
         builder: (context) {
           return Positioned(
-              top: headerSize.height + statusBarHeight + kLeadingWidth,
+              top: statusBarHeight + kLeadingHeight + headerSize.height,
               left: 0,
               width: MediaQuery.of(context).size.width,
               child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ListView.separated(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              _selectedIndex = index;
-                            });
-                            widget.onChanged(index);
-                            _hide();
-                          },
-                          child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: widget.height,
-                              color: Colors.white,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 14.0
-                                ),
-                                child: _selectedIndex == index ? Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text(widget.items[index], style: TextStyle(color: Colors.blue, fontSize: 12.0, decoration: TextDecoration.none),),
-                                    Icon(Icons.check, color: Colors.blue,),
-                                  ],
-                                ) :
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(widget.items[index], style: TextStyle(color: Colors.black54, fontSize: 12.0, decoration: TextDecoration.none),),
-                                  ],
-                                ),
-                              )
-                          ),
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return Divider(
-                          height: 0.0,
-                          thickness: 0.5,
-                          indent: 14.0,
-                        );
-                      },
-                      itemCount: widget.items.length,
+                    Material(
+                      child: ListView.separated(
+                        padding: EdgeInsets.zero,
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text(
+                              widget.items[index],
+                              style: TextStyle(
+                                fontSize: 14.0,
+                                color: _selectedIndex == index ? Colors.blue : null
+                              ),
+                            ),
+                            trailing: _selectedIndex == index ? Icon(Icons.done, color: Colors.blue,) : null,
+                            onTap: () {
+                              setState(() {
+                                _selectedIndex = index;
+                              });
+                              widget.onChanged(index);
+                              _hide();
+                            },
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return Divider(
+                            height: 0.0,
+                            thickness: 0.5,
+                            indent: 14.0,
+                          );
+                        },
+                        itemCount: widget.items.length,
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -143,7 +132,8 @@ class _DropdownSelectionWidgetState extends State<DropdownSelectionWidget> {
           );
         }
     );
-    state.insert(_entry);
+    // 显示
+    Overlay.of(context).insert(_entry);
     setState(() {
       _isExpanded = true;
     });

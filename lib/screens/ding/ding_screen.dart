@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:moa_flutter/screens/ding/task_item_widget.dart';
 import 'package:moa_flutter/widgets/dropdown_selection_widget.dart';
-import 'package:moa_flutter/widgets/task_item_widget.dart';
 
 class DingPage extends StatefulWidget {
   @override
@@ -28,6 +28,7 @@ class _DingPageState extends State<DingPage> with AutomaticKeepAliveClientMixin 
       body: Column(
         children: <Widget>[
           DropdownSelectionWidget(
+            parentContext: context,
             headerKey: GlobalKey(),
             items: _options,
             height: 40,

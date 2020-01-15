@@ -8,18 +8,17 @@ package im;
 
 enum CallType {
   AUTH = 0;
-  ACK_AUTH = 1;
-  HEARTBEAT = 2;
-  ACK_HEARTBEAT = 3;
-  MESSAGE = 4;
-  ACK_MESSAGE = 5;
-  MESSAGE_READ = 6;
-  ACK_MESSAGE_READ = 7;
-  SYSTEM = 8;
+  HEARTBEAT = 1;
+  MESSAGE = 2;
+  ACK_MESSAGE = 3;
+  MESSAGE_READ = 4;
+  ACK_MESSAGE_READ = 5;
+  SYSTEM = 6;
+  ACK_SYSTEM = 7;
 }
 
 message Call {
-  CallType type = 1;
+  int32 type = 1;
   bytes content = 2;
 }
 
@@ -29,49 +28,58 @@ enum PlatformType {
   ipad = 2;
   windows = 3;
   mac = 4;
+  browser = 5;
 }
 
 message Auth {
-  bytes userid = 1;
-  bytes token = 2;
+  string userid = 1;
+  string token = 2;
   PlatformType platform = 3;
   bool success = 4;
 }
 
-message HeartBeat {
-  int32 timestamp = 1;
-  int32 serverReplyTimestamp = 2;
-}
 
 enum MsgType {
   TEXT_SIMPLE = 0;
   TEXT_RICH = 1;
   TEXT_HTML = 2;
-  FILE = 3;
-  FILE_LIST = 4;
-  MEDIA_VOICE = 5;
-  MEDIA_VIDEO = 6;
-  JSON = 7;
+  PICTURE = 3;
+  PICTURE_LIST = 4;
+  FILE = 5;
+  FILE_LIST = 6;
+  MEDIA_VOICE = 7;
+  MEDIA_VIDEO = 8;
+  EMOTICON = 9;
+  VIDEO_CALL = 10;
+  VIDEO_CALL_ANSWER = 11;
+  VIDEO_CALL_REFUSE =12;
+  VIDEO_CALL_STOP =13;
+  VIDEO_CALL_MSG =14;
+  SILENT_PUSH = 200;
+  RECALL_MESSAGE = 201;
 }
 
 message MsgData {
-  bytes uid = 1;
-  MsgType type = 2;
-  bytes from = 3;
-  bytes to = 4;
-  bytes groupid = 5;
+  string uid = 1;
+  int32 type = 2;
+  string from = 3;
+  string to = 4;
+  string groupid = 5;
   bytes content = 6;
   PlatformType platform = 7;
-  int32 timestamp = 8;
-  bytes extra = 9;
+  string extra = 8;
+}
+
+message MsgContentText {
+  string text = 1;
 }
 
 message MsgContentFile {
-  bytes fileName = 1;
-  bytes fileUrl = 2;
-  bytes fileType = 3;
+  string fileName = 1;
+  string fileUrl = 2;
+  string fileType = 3;
   int32 fileSize = 4;
-  bytes thumbnailUrl = 5;
+  string thumbnailUrl = 5;
 }
 
 enum MsgMediaType {
@@ -80,16 +88,17 @@ enum MsgMediaType {
 }
 
 message MsgContentMedia {
-  bytes mediaUrl = 1;
+  string mediaUrl = 1;
   MsgMediaType mediaType = 2;
   int32 duration = 3;
   int32 fileSize = 4;
-  bytes thumbnailUrl = 5;
+  string thumbnailUrl = 5;
 }
 
 message MsgRead {
-  bytes uid = 1;
-  bytes userid = 2;
-  PlatformType platform = 3;
-  bytes timestamp = 4;
+  string uid = 1;
+  string from = 2;
+  string to = 3;
+  PlatformType platform = 4;
+  string timestamp = 5;
 }

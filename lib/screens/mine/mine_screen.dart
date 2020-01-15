@@ -79,14 +79,12 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
             height: 10.0,
             color: Colors.grey[200],
           ),
-          FlatButton(
-            child: ListTile(
-              leading: Icon(Icons.star, color: Colors.redAccent,),
-              title: Text('红包'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
-              debugPrint("点击了选项");
+          ListTile(
+            leading: Icon(Icons.star, color: Colors.redAccent,),
+            title: Text('红包'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              debugPrint("红包");
             },
           ),
           Container(
@@ -94,39 +92,33 @@ class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin 
             height: 10.0,
             color: Colors.grey[200],
           ),
-          FlatButton(
-            child: ListTile(
-              leading: Icon(Icons.star, color: Colors.redAccent,),
-              title: Text('收藏'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
+          ListTile(
+            leading: Icon(Icons.star, color: Colors.redAccent,),
+            title: Text('收藏'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
               debugPrint("点击了选项");
             },
           ),
           Divider(indent: 86.0, color: Colors.grey[200], height: 0.0,),
-          FlatButton(
-            child: ListTile(
+          ListTile(
               leading: Icon(Icons.star, color: Colors.redAccent,),
               title: Text('帮助'),
               trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
-              debugPrint("点击了选项");
-            },
+              onTap: () {
+                debugPrint("点击了选项");
+              }
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             height: 10.0,
             color: Colors.grey[200],
           ),
-          FlatButton(
-            child: ListTile(
-              leading: Icon(Icons.star, color: Colors.redAccent,),
-              title: Text('设置'),
-              trailing: Icon(Icons.arrow_forward_ios),
-            ),
-            onPressed: () {
+          ListTile(
+            leading: Icon(Icons.star, color: Colors.redAccent,),
+            title: Text('设置'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
               debugPrint("点击了选项");
             },
           ),

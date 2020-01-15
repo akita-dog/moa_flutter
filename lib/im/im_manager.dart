@@ -1,4 +1,4 @@
-import 'package:moa_flutter/generated/proto/message.pb.dart';
+import 'package:moa_flutter/generated/protobuf/message.pb.dart';
 import 'package:web_socket_channel/io.dart';
 
 class ImManager {
@@ -44,7 +44,7 @@ class ImManager {
 
   void sendMessage(MsgData msgData) {
     Call messageCall = Call();
-    messageCall.type = CallType.MESSAGE;
+    messageCall.type = CallType.MESSAGE.value;
     messageCall.content = msgData.writeToBuffer();
     _channel.sink.add(messageCall.writeToBuffer());
   }

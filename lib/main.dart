@@ -1,9 +1,13 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:moa_flutter/routers/application.dart';
 import 'package:moa_flutter/screens/ding/ding_screen.dart';
 import 'package:moa_flutter/screens/message/message_screen.dart';
 import 'package:moa_flutter/screens/mine/mine_screen.dart';
 import 'package:moa_flutter/screens/roster/roster_screen.dart';
 import 'package:moa_flutter/screens/work/work_screen.dart';
+import 'package:moa_flutter/routers/routers.dart';
+import 'package:web_socket_channel/io.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +18,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _pages = [
-    MessagePage(),
+    MessageScreen(),
     DingPage(),
     WorkPage(),
     RosterPage(),
@@ -34,6 +38,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
+    var router = Router();
+    Routers.configureRouters(router);
+    Application.router = router;
+    Application.channel =  IOWebSocketChannel.connect("ws://192.168.1.2:9999/chat");
   }
 
   @override
@@ -56,22 +65,16 @@ class _MyAppState extends State<MyApp> {
           onPageChanged: _onPageChanged,
           itemBuilder: (context, index) => _pages[index],
         ),
-        bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
+        bottomNavigationBar: BottomNavigationBar(
+          items: _tabBarItems,
+          currentIndex: _pageIndex,
+          onTap: (index) => _pageController.jumpToPage(index),
+          type: BottomNavigationBarType.fixed,
+          unselectedIconTheme: IconThemeData(
+            color: Colors.grey,
           ),
-          child: BottomNavigationBar(
-            items: _tabBarItems,
-            currentIndex: _pageIndex,
-            onTap: (index) => _pageController.jumpToPage(index),
-            type: BottomNavigationBarType.fixed,
-            unselectedIconTheme: IconThemeData(
-              color: Colors.grey,
-            ),
-            unselectedFontSize: 10.0,
-          ),
-        )
+          unselectedFontSize: 10.0,
+        ),
       ),
     );
   }

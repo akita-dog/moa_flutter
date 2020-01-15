@@ -15,7 +15,7 @@ export 'message.pbenum.dart';
 
 class Call extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Call', package: const $pb.PackageName('im'), createEmptyInstance: create)
-    ..e<CallType>(1, 'type', $pb.PbFieldType.OE, defaultOrMaker: CallType.AUTH, valueOf: CallType.valueOf, enumValues: CallType.values)
+    ..a<$core.int>(1, 'type', $pb.PbFieldType.O3)
     ..a<$core.List<$core.int>>(2, 'content', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;
@@ -36,9 +36,9 @@ class Call extends $pb.GeneratedMessage {
   static Call _defaultInstance;
 
   @$pb.TagNumber(1)
-  CallType get type => $_getN(0);
+  $core.int get type => $_getIZ(0);
   @$pb.TagNumber(1)
-  set type(CallType v) { setField(1, v); }
+  set type($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
@@ -56,8 +56,8 @@ class Call extends $pb.GeneratedMessage {
 
 class Auth extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Auth', package: const $pb.PackageName('im'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, 'userid', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(2, 'token', $pb.PbFieldType.OY)
+    ..aOS(1, 'userid')
+    ..aOS(2, 'token')
     ..e<PlatformType>(3, 'platform', $pb.PbFieldType.OE, defaultOrMaker: PlatformType.android, valueOf: PlatformType.valueOf, enumValues: PlatformType.values)
     ..aOB(4, 'success')
     ..hasRequiredFields = false
@@ -79,18 +79,18 @@ class Auth extends $pb.GeneratedMessage {
   static Auth _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get userid => $_getN(0);
+  $core.String get userid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set userid($core.List<$core.int> v) { $_setBytes(0, v); }
+  set userid($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasUserid() => $_has(0);
   @$pb.TagNumber(1)
   void clearUserid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.int> get token => $_getN(1);
+  $core.String get token => $_getSZ(1);
   @$pb.TagNumber(2)
-  set token($core.List<$core.int> v) { $_setBytes(1, v); }
+  set token($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasToken() => $_has(1);
   @$pb.TagNumber(2)
@@ -115,58 +115,16 @@ class Auth extends $pb.GeneratedMessage {
   void clearSuccess() => clearField(4);
 }
 
-class HeartBeat extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('HeartBeat', package: const $pb.PackageName('im'), createEmptyInstance: create)
-    ..a<$core.int>(1, 'timestamp', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, 'serverReplyTimestamp', $pb.PbFieldType.O3, protoName: 'serverReplyTimestamp')
-    ..hasRequiredFields = false
-  ;
-
-  HeartBeat._() : super();
-  factory HeartBeat() => create();
-  factory HeartBeat.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory HeartBeat.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  HeartBeat clone() => HeartBeat()..mergeFromMessage(this);
-  HeartBeat copyWith(void Function(HeartBeat) updates) => super.copyWith((message) => updates(message as HeartBeat));
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static HeartBeat create() => HeartBeat._();
-  HeartBeat createEmptyInstance() => create();
-  static $pb.PbList<HeartBeat> createRepeated() => $pb.PbList<HeartBeat>();
-  @$core.pragma('dart2js:noInline')
-  static HeartBeat getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<HeartBeat>(create);
-  static HeartBeat _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.int get timestamp => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set timestamp($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasTimestamp() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearTimestamp() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.int get serverReplyTimestamp => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set serverReplyTimestamp($core.int v) { $_setSignedInt32(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasServerReplyTimestamp() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearServerReplyTimestamp() => clearField(2);
-}
-
 class MsgData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('MsgData', package: const $pb.PackageName('im'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, 'uid', $pb.PbFieldType.OY)
-    ..e<MsgType>(2, 'type', $pb.PbFieldType.OE, defaultOrMaker: MsgType.TEXT_SIMPLE, valueOf: MsgType.valueOf, enumValues: MsgType.values)
-    ..a<$core.List<$core.int>>(3, 'from', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(4, 'to', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(5, 'groupid', $pb.PbFieldType.OY)
+    ..aOS(1, 'uid')
+    ..a<$core.int>(2, 'type', $pb.PbFieldType.O3)
+    ..aOS(3, 'from')
+    ..aOS(4, 'to')
+    ..aOS(5, 'groupid')
     ..a<$core.List<$core.int>>(6, 'content', $pb.PbFieldType.OY)
     ..e<PlatformType>(7, 'platform', $pb.PbFieldType.OE, defaultOrMaker: PlatformType.android, valueOf: PlatformType.valueOf, enumValues: PlatformType.values)
-    ..a<$core.int>(8, 'timestamp', $pb.PbFieldType.O3)
-    ..a<$core.List<$core.int>>(9, 'extra', $pb.PbFieldType.OY)
+    ..aOS(8, 'extra')
     ..hasRequiredFields = false
   ;
 
@@ -186,45 +144,45 @@ class MsgData extends $pb.GeneratedMessage {
   static MsgData _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get uid => $_getN(0);
+  $core.String get uid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set uid($core.List<$core.int> v) { $_setBytes(0, v); }
+  set uid($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasUid() => $_has(0);
   @$pb.TagNumber(1)
   void clearUid() => clearField(1);
 
   @$pb.TagNumber(2)
-  MsgType get type => $_getN(1);
+  $core.int get type => $_getIZ(1);
   @$pb.TagNumber(2)
-  set type(MsgType v) { setField(2, v); }
+  set type($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasType() => $_has(1);
   @$pb.TagNumber(2)
   void clearType() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<$core.int> get from => $_getN(2);
+  $core.String get from => $_getSZ(2);
   @$pb.TagNumber(3)
-  set from($core.List<$core.int> v) { $_setBytes(2, v); }
+  set from($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasFrom() => $_has(2);
   @$pb.TagNumber(3)
   void clearFrom() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.List<$core.int> get to => $_getN(3);
+  $core.String get to => $_getSZ(3);
   @$pb.TagNumber(4)
-  set to($core.List<$core.int> v) { $_setBytes(3, v); }
+  set to($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
   $core.bool hasTo() => $_has(3);
   @$pb.TagNumber(4)
   void clearTo() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.List<$core.int> get groupid => $_getN(4);
+  $core.String get groupid => $_getSZ(4);
   @$pb.TagNumber(5)
-  set groupid($core.List<$core.int> v) { $_setBytes(4, v); }
+  set groupid($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
   $core.bool hasGroupid() => $_has(4);
   @$pb.TagNumber(5)
@@ -249,31 +207,53 @@ class MsgData extends $pb.GeneratedMessage {
   void clearPlatform() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.int get timestamp => $_getIZ(7);
+  $core.String get extra => $_getSZ(7);
   @$pb.TagNumber(8)
-  set timestamp($core.int v) { $_setSignedInt32(7, v); }
+  set extra($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasTimestamp() => $_has(7);
+  $core.bool hasExtra() => $_has(7);
   @$pb.TagNumber(8)
-  void clearTimestamp() => clearField(8);
+  void clearExtra() => clearField(8);
+}
 
-  @$pb.TagNumber(9)
-  $core.List<$core.int> get extra => $_getN(8);
-  @$pb.TagNumber(9)
-  set extra($core.List<$core.int> v) { $_setBytes(8, v); }
-  @$pb.TagNumber(9)
-  $core.bool hasExtra() => $_has(8);
-  @$pb.TagNumber(9)
-  void clearExtra() => clearField(9);
+class MsgContentText extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MsgContentText', package: const $pb.PackageName('im'), createEmptyInstance: create)
+    ..aOS(1, 'text')
+    ..hasRequiredFields = false
+  ;
+
+  MsgContentText._() : super();
+  factory MsgContentText() => create();
+  factory MsgContentText.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgContentText.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  MsgContentText clone() => MsgContentText()..mergeFromMessage(this);
+  MsgContentText copyWith(void Function(MsgContentText) updates) => super.copyWith((message) => updates(message as MsgContentText));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgContentText create() => MsgContentText._();
+  MsgContentText createEmptyInstance() => create();
+  static $pb.PbList<MsgContentText> createRepeated() => $pb.PbList<MsgContentText>();
+  @$core.pragma('dart2js:noInline')
+  static MsgContentText getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgContentText>(create);
+  static MsgContentText _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get text => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set text($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasText() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearText() => clearField(1);
 }
 
 class MsgContentFile extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('MsgContentFile', package: const $pb.PackageName('im'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, 'fileName', $pb.PbFieldType.OY, protoName: 'fileName')
-    ..a<$core.List<$core.int>>(2, 'fileUrl', $pb.PbFieldType.OY, protoName: 'fileUrl')
-    ..a<$core.List<$core.int>>(3, 'fileType', $pb.PbFieldType.OY, protoName: 'fileType')
+    ..aOS(1, 'fileName', protoName: 'fileName')
+    ..aOS(2, 'fileUrl', protoName: 'fileUrl')
+    ..aOS(3, 'fileType', protoName: 'fileType')
     ..a<$core.int>(4, 'fileSize', $pb.PbFieldType.O3, protoName: 'fileSize')
-    ..a<$core.List<$core.int>>(5, 'thumbnailUrl', $pb.PbFieldType.OY, protoName: 'thumbnailUrl')
+    ..aOS(5, 'thumbnailUrl', protoName: 'thumbnailUrl')
     ..hasRequiredFields = false
   ;
 
@@ -293,27 +273,27 @@ class MsgContentFile extends $pb.GeneratedMessage {
   static MsgContentFile _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get fileName => $_getN(0);
+  $core.String get fileName => $_getSZ(0);
   @$pb.TagNumber(1)
-  set fileName($core.List<$core.int> v) { $_setBytes(0, v); }
+  set fileName($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasFileName() => $_has(0);
   @$pb.TagNumber(1)
   void clearFileName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.int> get fileUrl => $_getN(1);
+  $core.String get fileUrl => $_getSZ(1);
   @$pb.TagNumber(2)
-  set fileUrl($core.List<$core.int> v) { $_setBytes(1, v); }
+  set fileUrl($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasFileUrl() => $_has(1);
   @$pb.TagNumber(2)
   void clearFileUrl() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<$core.int> get fileType => $_getN(2);
+  $core.String get fileType => $_getSZ(2);
   @$pb.TagNumber(3)
-  set fileType($core.List<$core.int> v) { $_setBytes(2, v); }
+  set fileType($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasFileType() => $_has(2);
   @$pb.TagNumber(3)
@@ -329,9 +309,9 @@ class MsgContentFile extends $pb.GeneratedMessage {
   void clearFileSize() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.List<$core.int> get thumbnailUrl => $_getN(4);
+  $core.String get thumbnailUrl => $_getSZ(4);
   @$pb.TagNumber(5)
-  set thumbnailUrl($core.List<$core.int> v) { $_setBytes(4, v); }
+  set thumbnailUrl($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
   $core.bool hasThumbnailUrl() => $_has(4);
   @$pb.TagNumber(5)
@@ -340,11 +320,11 @@ class MsgContentFile extends $pb.GeneratedMessage {
 
 class MsgContentMedia extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('MsgContentMedia', package: const $pb.PackageName('im'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, 'mediaUrl', $pb.PbFieldType.OY, protoName: 'mediaUrl')
+    ..aOS(1, 'mediaUrl', protoName: 'mediaUrl')
     ..e<MsgMediaType>(2, 'mediaType', $pb.PbFieldType.OE, protoName: 'mediaType', defaultOrMaker: MsgMediaType.VOICE, valueOf: MsgMediaType.valueOf, enumValues: MsgMediaType.values)
     ..a<$core.int>(3, 'duration', $pb.PbFieldType.O3)
     ..a<$core.int>(4, 'fileSize', $pb.PbFieldType.O3, protoName: 'fileSize')
-    ..a<$core.List<$core.int>>(5, 'thumbnailUrl', $pb.PbFieldType.OY, protoName: 'thumbnailUrl')
+    ..aOS(5, 'thumbnailUrl', protoName: 'thumbnailUrl')
     ..hasRequiredFields = false
   ;
 
@@ -364,9 +344,9 @@ class MsgContentMedia extends $pb.GeneratedMessage {
   static MsgContentMedia _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get mediaUrl => $_getN(0);
+  $core.String get mediaUrl => $_getSZ(0);
   @$pb.TagNumber(1)
-  set mediaUrl($core.List<$core.int> v) { $_setBytes(0, v); }
+  set mediaUrl($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasMediaUrl() => $_has(0);
   @$pb.TagNumber(1)
@@ -400,9 +380,9 @@ class MsgContentMedia extends $pb.GeneratedMessage {
   void clearFileSize() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.List<$core.int> get thumbnailUrl => $_getN(4);
+  $core.String get thumbnailUrl => $_getSZ(4);
   @$pb.TagNumber(5)
-  set thumbnailUrl($core.List<$core.int> v) { $_setBytes(4, v); }
+  set thumbnailUrl($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
   $core.bool hasThumbnailUrl() => $_has(4);
   @$pb.TagNumber(5)
@@ -411,10 +391,11 @@ class MsgContentMedia extends $pb.GeneratedMessage {
 
 class MsgRead extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('MsgRead', package: const $pb.PackageName('im'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, 'uid', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(2, 'userid', $pb.PbFieldType.OY)
-    ..e<PlatformType>(3, 'platform', $pb.PbFieldType.OE, defaultOrMaker: PlatformType.android, valueOf: PlatformType.valueOf, enumValues: PlatformType.values)
-    ..a<$core.List<$core.int>>(4, 'timestamp', $pb.PbFieldType.OY)
+    ..aOS(1, 'uid')
+    ..aOS(2, 'from')
+    ..aOS(3, 'to')
+    ..e<PlatformType>(4, 'platform', $pb.PbFieldType.OE, defaultOrMaker: PlatformType.android, valueOf: PlatformType.valueOf, enumValues: PlatformType.values)
+    ..aOS(5, 'timestamp')
     ..hasRequiredFields = false
   ;
 
@@ -434,39 +415,48 @@ class MsgRead extends $pb.GeneratedMessage {
   static MsgRead _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.int> get uid => $_getN(0);
+  $core.String get uid => $_getSZ(0);
   @$pb.TagNumber(1)
-  set uid($core.List<$core.int> v) { $_setBytes(0, v); }
+  set uid($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
   $core.bool hasUid() => $_has(0);
   @$pb.TagNumber(1)
   void clearUid() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.int> get userid => $_getN(1);
+  $core.String get from => $_getSZ(1);
   @$pb.TagNumber(2)
-  set userid($core.List<$core.int> v) { $_setBytes(1, v); }
+  set from($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasUserid() => $_has(1);
+  $core.bool hasFrom() => $_has(1);
   @$pb.TagNumber(2)
-  void clearUserid() => clearField(2);
+  void clearFrom() => clearField(2);
 
   @$pb.TagNumber(3)
-  PlatformType get platform => $_getN(2);
+  $core.String get to => $_getSZ(2);
   @$pb.TagNumber(3)
-  set platform(PlatformType v) { setField(3, v); }
+  set to($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasPlatform() => $_has(2);
+  $core.bool hasTo() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPlatform() => clearField(3);
+  void clearTo() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.List<$core.int> get timestamp => $_getN(3);
+  PlatformType get platform => $_getN(3);
   @$pb.TagNumber(4)
-  set timestamp($core.List<$core.int> v) { $_setBytes(3, v); }
+  set platform(PlatformType v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasTimestamp() => $_has(3);
+  $core.bool hasPlatform() => $_has(3);
   @$pb.TagNumber(4)
-  void clearTimestamp() => clearField(4);
+  void clearPlatform() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get timestamp => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set timestamp($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasTimestamp() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearTimestamp() => clearField(5);
 }
 
